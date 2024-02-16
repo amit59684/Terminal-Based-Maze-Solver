@@ -99,7 +99,13 @@ def Genarate_new_M(R, C, MS, MF):
 
 
 def Show_M(M, P):
-    S = {0: "*", 1: "_", 2: "1", 3: "2", -1: "0"}  
+    S = {
+        0: "\033[91m▓\033[0m",  # Wall (red)
+        1: "\033[94m◌\033[0m",  # Open Space (blue)
+        2: "\033[92mS\033[0m",  # Start (green)
+        3: "\033[92mE\033[0m",  # End (green)
+        -1: "\033[92m◍\033[0m"  # Path (green)
+    }
     M_copy = [row[:] for row in M]
     for x, y in P:
         M_copy[x][y] = -1
