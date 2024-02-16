@@ -140,8 +140,36 @@ def Find_P():
     dfs(vis, (0,0))
 
 if __name__ == "__main__":
-    N = int(input("Enter the size of the M (N x N): "))
+    N = int(input("Enter Maze Size (N x N): "))
     MS= (0, 0)
     MF = (N - 1, N - 1)
     M = Genarate_new_M(N, N, MS, MF)
     Show_M(M, [])
+while True:
+        print("\nOptions:")
+        print("1. Show Answer")
+        print("2. Show Another Maze")
+        print("3. Exit!!")
+
+        user_input = input("Please Enter {1 or 2 or 3}: ")
+
+        if user_input == "1":
+            P = []
+            Find_P()
+            if len(P) > 0:
+                print("Here is Your Answer😊!")
+                Show_M(M, P)
+            else:
+                print("Sorry No Path Found😔!")
+
+        elif user_input == "2":
+            print("Here Is A New Maze For You😊!")
+            M = Genarate_new_M(N, N, MS, MF)
+            Show_M(M, [])
+
+        elif user_input == "3":
+            print("Exiting The Game 😔!")
+            break
+
+        else:
+            print("Invalid input 🔎. Please Enter 1 or 2 or 3.")
