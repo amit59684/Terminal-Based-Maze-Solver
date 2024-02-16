@@ -105,3 +105,36 @@ def Show_M(M, P):
         M_copy[x][y] = -1
     for row in M_copy:
         print(" ".join(S[cell] for cell in row))
+
+
+def dfs(Vis, Cord):
+    global M, P
+    
+    if (not (Cord[0]>=0 and Cord[0]<len(M) and Cord[1]>=0 and Cord[1]<len(M))) or M[Cord[0]][Cord[1]]==0:
+        return False
+    
+    if Cord[0]==len(M)-1 and Cord[1]==len(M)-1:
+        return True
+
+    dirs = [(0,1),(1,0),(0,-1),(-1,0)]
+
+    for dir in dirs:
+        newC = (Cord[0]+dir[0], Cord[1]+dir[1])
+        if (not (newC[0]>=0 and newC[0]<len(M) and newC[1]>=0 and newC[1]<len(M))):
+            continue
+        if (not Vis[newC[0]][newC[1]]):
+            Vis[newC[0]][newC[1]] = True
+            flag = dfs(Vis, newC)
+            if flag:
+                P.append(newC)
+                return True
+            else:
+                Vis[newC[0]][newC[1]] = False
+                
+    return False
+
+def Find_P():
+    global M
+    vis = [[False for i in range(len(M))] for i in range(len(M))]
+    
+    dfs(vis, (0,0))
