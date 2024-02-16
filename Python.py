@@ -30,7 +30,7 @@ class Stack:
         return self.head.val
 
 M = [] 
-path = []
+P = []
 
 
 def Genarate_new_M(R, C, MS, MF):
@@ -95,3 +95,13 @@ def Genarate_new_M(R, C, MS, MF):
     M[x0][y0] = 2
     M[xf][yf] = 3
     return M
+
+
+
+def Show_M(M, P):
+    S = {0: "*", 1: "_", 2: "1", 3: "2", -1: "0"}  
+    M_copy = [row[:] for row in M]
+    for x, y in P:
+        M_copy[x][y] = -1
+    for row in M_copy:
+        print(" ".join(S[cell] for cell in row))
