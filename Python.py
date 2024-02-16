@@ -138,3 +138,10 @@ def Find_P():
     vis = [[False for i in range(len(M))] for i in range(len(M))]
     
     dfs(vis, (0,0))
+
+if __name__ == "__main__":
+    N = int(input("Enter the size of the M (N x N): "))
+    MS= (0, 0)
+    MF = (N - 1, N - 1)
+    M = Genarate_new_M(N, N, MS, MF)
+    Show_M(M, [])
